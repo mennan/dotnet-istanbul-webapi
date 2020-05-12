@@ -352,4 +352,10 @@ healthchecksdb
 # Backup folder for Package Reference Convert tool in Visual Studio 2017
 MigrationBackup/
 
+# Rider
+.idea
+
+# Visual Studio Code
+.vscode
+
 # End of https://www.gitignore.io/api/csharp
