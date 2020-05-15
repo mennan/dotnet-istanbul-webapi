@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using DotNetIstanbul.WebApi.Controllers.Base.v1;
 using DotNetIstanbul.WebApi.Entity;
@@ -18,7 +19,12 @@ namespace DotNetIstanbul.WebApi.Controllers.v1
 			_context = context;
 		}
 
+		/// <summary>
+		/// List all users
+		/// </summary>
+		/// <returns>User list</returns>
 		[HttpGet]
+		[ProducesResponseType(typeof(List<DUsers>), 200)]
 		public async Task<IActionResult> Get()
 		{
 			var users = await _context.Users.ToListAsync();
@@ -36,8 +42,16 @@ namespace DotNetIstanbul.WebApi.Controllers.v1
 			return Success("User found.", null, user);
 		}
 
+		/// <summary>
+		/// Create a new user
+		/// </summary>
+		/// <param name="model">User information</param>
+		/// <returns>Results</returns>
 		[HttpPost]
 		[ValidateModel]
+		[ProducesResponseType(typeof(ApiReturn<DUsers>), 200)]
+		[ProducesResponseType(typeof(ApiReturn<DUsers>), 400)]
+		[ProducesResponseType(typeof(ApiReturn<DUsers>), 500)]
 		public async Task<IActionResult> Post([FromBody] DUsers model)
 		{
 			try

@@ -10,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace DotNetIstanbul.WebApi.Controllers
 {
+	[ApiVersionNeutral]
 	public class AuthController : BaseApiController
 	{
 		private readonly IConfiguration _configuration;
